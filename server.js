@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const { WebSocketServer } = require('ws');
+const path = require('path');
 
 const app = express();
 const PORT = process.env.PORT || 5005;
@@ -17,6 +18,7 @@ app.get('/get-video', (req, res) => {
   const videoPath = path.join(__dirname, 'public', 'video.mp4');
   res.download(videoPath, 'video.mp4', (err) => {
     if (err) {
+      console.log(err);
       console.error('Помилка при завантаженні відео:', err);
       res.status(500).send('Помилка при завантаженні відео');
     }
