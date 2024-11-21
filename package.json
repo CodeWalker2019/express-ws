@@ -1,0 +1,12 @@
+{
+  "name": "epress-ws",
+  "version": "1.0.0",
+  "main": "server.js",
+  "repository": "git@github.com:CodeWalker2019/express-ws.git",
+  "author": "Serhii Sharyi <serhiisharyi77@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "ws": "^8.18.0"
+  }
+}
