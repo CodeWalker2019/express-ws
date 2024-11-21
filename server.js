@@ -7,15 +7,15 @@ const PORT = 3000;
 
 app.use(cors());
 
-// WebSocket сервер
-const wss = new WebSocketServer({ port: 3001 });
+const server = app.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}`);
+});
+
+const wss = new WebSocketServer({ server });
 
 wss.on('connection', (ws) => {
-  console.log('Клієнт підключений до WebSocket');
-
-  ws.on('close', () => {
-    console.log('Клієнт відключився');
-  });
+  console.log('WebSocket client connected');
+  ws.on('close', () => console.log('WebSocket client disconnected'));
 });
 
 app.post('/start-video', (req, res) => {
