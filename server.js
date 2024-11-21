@@ -3,7 +3,7 @@ const cors = require('cors');
 const { WebSocketServer } = require('ws');
 
 const app = express();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 5005;
 
 app.use(cors());
 
@@ -27,8 +27,4 @@ app.post('/start-video', (req, res) => {
     }
   });
   res.status(200).send({ message: 'Відео запущено' });
-});
-
-app.listen(PORT, () => {
-  console.log(`Сервер працює на http://localhost:${PORT}`);
 });
