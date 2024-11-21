@@ -11,6 +11,18 @@ const server = app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
 
+app.use('/static', express.static(path.join(__dirname, 'public')));
+
+app.get('/get-video', (req, res) => {
+  const videoPath = path.join(__dirname, 'public', 'video.mp4');
+  res.download(videoPath, 'video.mp4', (err) => {
+    if (err) {
+      console.error('Помилка при завантаженні відео:', err);
+      res.status(500).send('Помилка при завантаженні відео');
+    }
+  });
+});
+
 const wss = new WebSocketServer({ server });
 
 wss.on('connection', (ws) => {
